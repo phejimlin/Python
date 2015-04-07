@@ -5,8 +5,8 @@ from nltk.util import ngrams
 import string
 from string import maketrans
 from operator import itemgetter, attrgetter, methodcaller
-#File_text=sys.argv[1]
-#N_grams=int(sys.argv[2])
+File_text=sys.argv[1]
+N_grams=int(sys.argv[2])
 
 #print File_text,N_grams
 
@@ -14,7 +14,7 @@ from operator import itemgetter, attrgetter, methodcaller
 line_counter=0
 model={}
 
-infile = file('apple.txt',"r")
+infile = file(File_text,"r")
 while True:
 	line_counter+=1
 	#print line_counter
@@ -24,7 +24,7 @@ while True:
 		File_read_line=File_read_line.lower() 		#change all to small
 		out_remove_punctuation = File_read_line.translate(string.maketrans("",""), string.punctuation) 		#remove punction
 
-		N_grams_read=ngrams(out_remove_punctuation.split(),2)
+		N_grams_read=ngrams(out_remove_punctuation.split(),N_grams)
 
 		for N_grams_word in N_grams_read:
 			#print N_grams_word 
